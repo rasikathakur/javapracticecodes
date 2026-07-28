@@ -237,21 +237,203 @@ class Main {
                     break;
                 case 13:
                     // Create a program to merge two sorted arrays.
+                    System.out.println("Enter array1 size: ");
+                    int size1 = sc.nextInt();
+                    int arr1[] = new int[size1];  //initialized array
+                    i = 0;
+                    System.out.println("Enter sorted array1 elements: ");
+                    while(i<size1){
+                        arr1[i] = sc.nextInt();
+                        i++;
+                    }
                     
+                    System.out.println("Enter array2 size: ");
+                    int size2 = sc.nextInt();
+                    int arr2[] = new int[size2];  //initialized array
+                    i = 0;
+                    System.out.println("Enter sorted array2 elements: ");
+                    while(i<size2){
+                        arr2[i] = sc.nextInt();
+                        i++;
+                    }
+                    System.out.println("Array 1 elements: "+ Arrays.toString(arr1));
+                    System.out.println("Array 2 elements: "+ Arrays.toString(arr2));
+                    i = 0;
+                    j = 0;
+                    int k = 0;
+                    int resArr[] = new int[size1+size2];
+                    while(i < size1 && j < size2){
+                        if(arr1[i] <= arr2[j]){
+                            resArr[k] = arr1[i];
+                            i++;
+                        }else{
+                            resArr[k] = arr2[j];
+                            j++;
+                        }
+                        k++;
+                    }
+                    while(i < size1){
+                        resArr[k] = arr1[i];
+                        i++;
+                        k++;
+                    }
+                    while(j < size2){
+                        resArr[k] = arr2[j];
+                        j++;
+                        k++;
+                    }
+                     System.out.println("Merged Array: "+ Arrays.toString(resArr));
                     break;
                 case 14:
                     // Create a program to search an element in a 2-D array.
+                    System.out.println("Enter 2D array rows and columns: ");
+                    int rows = sc.nextInt();
+                    int cols = sc.nextInt();
+                    int arrTwoD[][] = new int[rows][cols];
+                    System.out.println("Enter 2D array elements: ");
+                    i = 0;
                     
+                    while(i < rows){
+                        j = 0;
+                        while(j < cols){
+                            System.out.println("Enter value for ["+i+"] ["+j+"] : ");
+                            arrTwoD[i][j] = sc.nextInt();
+                            j++;
+                        }
+                        i++;
+                    }
+                    System.out.println("2D array:");
+                    i = 0;
+                    
+                    while(i < rows){
+                        j = 0;
+                        while(j < cols){
+                            System.out.print(arrTwoD[i][j]+" ");
+                            j++;
+                        }
+                        System.out.println();
+                        i++;
+                    }
+                    System.out.println("Enter element to search");
+                    int elTwoD = sc.nextInt();
+                    boolean found = false;
+                    int rowFound = -1;
+                    int colFound = -1;
+                    i = 0;
+                    
+                    while(i < rows){
+                        j = 0;
+                        while(j < cols){
+                            if(arrTwoD[i][j] == elTwoD){
+                                found = true;
+                                rowFound = i;
+                                colFound = j;
+                                break;
+                            }
+                            j++;
+                        }
+                        i++;
+                    }
+                    if(found){
+                        System.out.println(elTwoD+" element found in array at postion ["+rowFound+"]["+colFound+"]");
+                    }else{
+                        System.out.println("Element not found in array");
+                    }
                     break;
                 case 15:
                     // Create a program to do sum and average of all elements in a 2-D array
+                    System.out.println("Enter 2D array rows and columns: ");
+                    int rows2 = sc.nextInt();
+                    int cols2 = sc.nextInt();
+                    int arrSumAv[][] = new int[rows2][cols2];
+                    System.out.println("Enter 2D array elements: ");
+                    i = 0;
                     
+                    while(i < rows2){
+                        j = 0;
+                        while(j < cols2){
+                            System.out.println("Enter value for ["+i+"] ["+j+"] : ");
+                            arrSumAv[i][j] = sc.nextInt();
+                            j++;
+                        }
+                        i++;
+                    }
+                    System.out.println("2D array:");
+                    i = 0;
+                    
+                    while(i < rows2){
+                        j = 0;
+                        while(j < cols2){
+                            System.out.print(arrSumAv[i][j]+" ");
+                            j++;
+                        }
+                        System.out.println();
+                        i++;
+                    }
+                    
+                    float sumTwoD = 0;
+                    i = 0;
+                    
+                    while(i < rows2){
+                        j = 0;
+                        while(j < cols2){
+                            sumTwoD+=arrSumAv[i][j];
+                            j++;
+                        }
+                        i++;
+                    }
+                    double averageTwoD = sumTwoD/(rows2*cols2);
+                    System.out.print("Sum: "+sumTwoD+"\nAverage: "+averageTwoD+"\n");
                     break;
                 case 16: 
                     // Create a program to find the sum of two diagonal elements.
+                    System.out.println("Enter 2D array rows and columns: ");
+                    int rows3 = sc.nextInt();
+                    int cols3 = sc.nextInt();
+                    if(rows3 != cols3){
+                        System.out.println("The matrix must be a square matrix !!");
+                        break;
+                    }
+                    int arrSumDg[][] = new int[rows3][cols3];
+                    System.out.println("Enter 2D array elements: ");
+                    i = 0;
+                    while(i < rows3){
+                        j = 0;
+                        while(j < cols3){
+                            System.out.println("Enter value for ["+i+"] ["+j+"] : ");
+                            arrSumDg[i][j] = sc.nextInt();
+                            j++;
+                        }
+                        i++;
+                    }
+                    System.out.println("2D array:");
+                    i = 0;
+                    
+                    while(i < rows3){
+                        j = 0;
+                        while(j < cols3){
+                            System.out.print(arrSumDg[i][j]+" ");
+                            j++;
+                        }
+                        System.out.println();
+                        i++;
+                    }
+                    float primarysumDg = 0;
+                    float secondarysumDg = 0;
+                    i = 0;
+                    while(i < rows3){
+                       primarysumDg +=arrSumDg[i][i];
+                       secondarysumDg +=arrSumDg[i][rows3-1-i];
+                       i++;
+                    }
+                    float totalsumdg = primarysumDg+secondarysumDg;
+                    if (rows3 % 2 != 0) {
+                        totalsumdg = totalsumdg - arrSumDg[rows3 / 2][rows3 / 2];
+                    }
+                    System.out.print("Sum: "+totalsumdg+"\n");
                     break;
             }
-        }while(ch <=15);
+        }while(ch <=16);
 
     }
 }
