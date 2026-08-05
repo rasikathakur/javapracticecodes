@@ -437,3 +437,32 @@ class Main {
 
     }
 }
+
+//min max code optimal O(n);
+
+import java.util.*;
+class Main {
+    public static int[] minmax(int arr[]){
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        
+        int i = 0;
+        
+        while(i < arr.length){
+            if(arr[i] >= max){
+                max = arr[i];
+            }else if(arr[i] <= min){
+                min = arr[i];
+            }
+            i++;
+        }
+        
+        return new int[]{min, max};
+    }
+    public static void main(String[] args) {
+        int arra[] = new int[]{19,6,5,8,0,2,7,9,1};
+        int minMaxArr[] = minmax(arra);
+        System.out.println(Arrays.toString(minMaxArr));
+        
+    }
+}
